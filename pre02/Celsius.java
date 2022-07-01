@@ -10,7 +10,8 @@ public class Celsius{
         
         //prompt the user for input
         System.out.print("Enter a temperature in Celsius: ");
-        cel = in.nextDouble();
+        cel = in.nextDouble(); 
+        //question: nextLine() read multiple lines whereas nextDouble() reads only 1 double?
         
         //calculate the reselt and format the output to once decimal place 
         fahren = cel*(9.0/5.0) + 32.0;  
