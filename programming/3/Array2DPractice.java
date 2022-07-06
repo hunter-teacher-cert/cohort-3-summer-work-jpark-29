@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * Array2DPractice by Team LucidThinkeren
  * Jihae Park
- * collaborators: First Last, F
+ * collaborators: Sarah McCoy, Adam Prado, Kirk Martin
  */
 
 /**
@@ -106,7 +106,9 @@ public class Array2DPractice
   */
   public static void setRow( char[][] board, int row, char value )
   {
-    /* YOUR AWESOME CODE HERE */
+    for(int i = 0; i < board[row].length; i++){
+        board[row][i] = value;
+    }
   }
 
 
@@ -166,9 +168,7 @@ public class Array2DPractice
      Note: Make sure to correctly handle the cases when you try
      to explode an element on the edges.
   */
-  public static void explodeSquare( char[][] board, int row, int col )
-  {
-    /* YOUR AWESOME CODE HERE */
+   /* YOUR AWESOME CODE HERE */
     // below are the positions of all neighboring cells
     // board[row-1][col-1]='X';  //up left
     // board[row-1][col]='X';    //up center
@@ -178,14 +178,40 @@ public class Array2DPractice
     // board[row+1][col-1]='X';    //bottom left
     // board[row+1][col]='X';      //bottom center
     // board[row+1][col+1]='X';    //bottom right
+    public static void explodeSquare( char[][] board, int row, int col )
+  {    
+      //initialize the row and col int
+      int rows = board.length;
+      int cols = board[0].length;
 
-     for (int i = row-1; i < row+2; i++) {
-      for (int j = col-1; j < col+2; j++) {
-        if(i>0 && i<board.length-1 !(row==i && col==j)){ //&& j>0 && j<board[0].length-1 && 
-          if(&& j>0 && j<board[0].length-1 )
-          board[i][j]='x';  
+      for(int i = 0; i < rows; i++){
+          for(int j = 0; j < cols; j++){
+              if((row -1 <= i && i <= row +1) &&
+                 (col -1 <= j && j <= col +1) &&
+                 (!(i == row && j == col))){
+                    board[i][j] = 'x';
+                 }
+          }
+    
+      }
   }
 
+//another solution for explodeSquare
+/*
+for (int i = row-1; i < row+2; i++) {
+      for (int j = col-1; j < col+2; j++) {
+        if(i > -1 && 
+						i < board.length && 
+						!(row==i && col==j) &&
+						j > -1 &&
+						j<board[0].length){
+				
+          board[i][j]='x';
+          
+        }
+      }
+     }
+*/
   /**
      This method will search through the 2D array board and it will
      explode each square that contains the char z (using the above
