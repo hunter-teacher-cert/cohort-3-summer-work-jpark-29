@@ -62,7 +62,10 @@ public class ArrayPractice
   public static int[] buildIncreasingArray( int size, int startValue, int step )
   {
     int[] data = new int[size];
-
+    data[0] = startValue;
+    for(int i = 1; i < size; i++){
+        data[i] = data[i-1] + step;
+    }
     // loop through each element of the array and
     /* YOUR BRILLIANT CODE HERE */
 
@@ -192,11 +195,14 @@ public class ArrayPractice
      value of the largest element in the array
   */
   public static int findMaxValue( int[] data ) {
-    int m = 0;  // will hold the maximum value;
+    int max = data[0];  // will hold the maximum value;
+    for(int i = 1; i < data.length; i++){
+        if (data[i] > max){
+            max = data[i];
+        }
+    }
 
-    /* YOUR BRILLIANT CODE HERE */
-
-    return m;
+    return max;
   }
 
 
@@ -252,8 +258,10 @@ public class ArrayPractice
     
     // int[] data2 = buildIncreasingArray(10,5,3);
     printArray(data);
-    System.out.println(arraySum(data));
-    System.out.println(firstOccurence(data, 3));
+    System.out.println("The sum of the integers in the array is " + arraySum(data) + ".");
+    System.out.println("The first occurrence of 3 in the array is in the index of " + firstOccurence(data, 3) + ".");
+    System.out.println("The largest number in the array is " + findMaxValue(data) + ".");
+    printArray(buildIncreasingArray(5,3,2));
     // printArray(data2);
 
     // add calls to show that the methods you write work.
