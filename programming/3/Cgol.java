@@ -46,10 +46,9 @@ public class Cgol
     {
       for (int j = 0; j < board[i].length; j++) //i instead of row??
       {
-        System.out.print(board[i][j] + " ");
-        
+        System.out.print(board[i][j] + " "); 
       }
-    System.out.println("");
+      System.out.println("");
     }
   }
 
@@ -70,15 +69,16 @@ public class Cgol
     int count = 0;
     int rows = board.length;
     int cols = board[0].length;
-
-    for (int i=r-1; i<=r+1; i++) {
-      for (int j=c-1; j<=c+1; j++) {
-        //check to see if the current cell is the targeted cell. If it is, then continue with the incremented value? 
+    
+    //iterate through the nine neighboring cells 
+    for (int i = r-1; i <= r+1; i++) {
+      for (int j = c-1; j <= c+1; j++) {
+        //if the current cell is the targeted cell, then skip the code below and continue with the incremented value in the above for loop
         if (i == r && j == c){
           continue;
         }
+        //i >= 0 is to check if the left top corner is not out of the bound
         if ((i >= 0 && i < rows) && (j >= 0 && j < cols)) {
-          //i != r
             if (board[i][j] == 'X') {
               count ++;
             } 
@@ -103,10 +103,13 @@ public class Cgol
   //a dead cell with exactly 3 live neighbors becomes a live cell, as if by reproduction
   public static char getNextGenCell( char[][] board,int r, int c ) //5
   {
+    //initialize the number of live neighbors 
     int numAlive = countNeighbours(board, r, c);
+    //a live cell with fewer than 2  or more than 3 live neighbors dies
     if (board[r][c] == 'X' && (numAlive < 2 || numAlive > 3)){
       return '-';
-    } else if (board[r][c] == '-' && numAlive == 3){
+    } //a dead cell with exactly 3 live neighbors becomes a live cell 
+    else if (board[r][c] == '-' && numAlive == 3){
       return 'X';    
     }
     return board[r][c];
@@ -122,7 +125,7 @@ public class Cgol
     char[][] tempBoard = createNewBoard(board.length, board[0].length);   
     for(int i = 0; i < board.length; i++){
       for(int j = 0; j < board[0].length; j++){
-        tempBoard[i][j] = getNextGenCell(board,i,j);
+        tempBoard[i][j] = getNextGenCell(board, i, j);
       }
     }
     return tempBoard;
@@ -139,9 +142,11 @@ public class Cgol
     setCell(board, 1, 1, 'X');
     setCell(board, 2, 1, 'X');
     setCell(board, 3, 1, 'X');
+    
     System.out.println("Gen " + gen + ":");
     printBoard(board);
     System.out.println("--------------------------\n\n");
+    
     System.out.println(countNeighbours(board,0,0));
     
     board = generateNextBoard(board);

@@ -120,14 +120,14 @@ public class Array2DPractice
   public static char[][] copyBoard( char[][] original )
   {
        char[][] copy = new char[original.length][original[0].length];
-       for (int row = 0; row < board.length; row++)  
+       for (int row = 0; row < original.length; row++)  
         {
-          for (int column = 0; column < board[0].length; column++)
+          for (int column = 0; column < original[0].length; column++)
           {
-            copy[row][column] = original[row][column]
+            copy[row][column] = original[row][column];
           }
-        return copy;
         }
+    return copy;
   }
 
 
