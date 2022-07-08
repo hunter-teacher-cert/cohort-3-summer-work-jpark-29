@@ -45,7 +45,7 @@ public class Time {
     int minutes;
     int seconds;
 
-    //default constructors - review the keyword "this"
+    //default constructors 
     public Time(){
     	this.hours = 0;
     	this.minutes = 0;
@@ -60,10 +60,11 @@ public class Time {
        Initialize this instance to represent hrs:mins:secs as the time.
        
      */
+    // this.hours refers to the instance variable and hrs refers to the parameters
     public Time(int hrs, int mins, int secs){
-      hours = hrs;
-      minutes = mins;
-      seconds =  secs;
+      this.hours = hrs;
+      this.minutes = mins;
+      this.seconds =  secs;
 
     }
     
@@ -74,7 +75,7 @@ public class Time {
        returns a string representation of the time
     */
     public String toString(){
-	    return( hours + ":"  + minutes + ":" + seconds);
+	    return(this.hours + ":"  + this.minutes + ":" + this.seconds);
     }
 
 
@@ -87,9 +88,11 @@ public class Time {
        modifies this instance to represent the time hrs:mins:secs
     */
     public void set(int hrs, int mins, int secs){
-	// add the code to add the time represented by other
-	// to this instance.
-
+  	// add the code to set the time represented by other
+  	// to this instance.
+      this.hours = hrs;
+      this.minutes = mins;
+      this.seconds = secs;
     }
 
     
@@ -104,7 +107,18 @@ public class Time {
     public void add(Time other){
 	// add the code to add the time represented by other
 	// to this instance.
-
+      this.hours += other.hours;
+      this.seconds += other.seconds;
+      if(this.seconds >= 60){
+        this.minutes += 1;
+        this.seconds -= 60;
+      }
+      this.minutes += other.minutes;
+      if (this.minutes >= 60){
+        this.hours += 1;
+        this.minutes -= 60;
+      }
+      
     }
 
 
@@ -117,9 +131,11 @@ public class Time {
        false otherwise.
     */
     public boolean equals(Time other){
-	// your code here)
-
-	return false; // change this
+	    if(this.hours == other.hours && 
+         this.minutes == other.minutes &&
+         this.seconds == other.seconds){
+        return true;
+         } else return false; // change this
     }
 
     /**
@@ -137,11 +153,18 @@ public class Time {
 
     */
     public int compareTo(Time other){
-	// your code here)
-
-	return 0; // change this
+	    if (this.hours > other.hours ||
+          this.hours == other.hours && this.minutes > other.minutes ||
+          this.hours == other.hours && this.minutes == other.minutes &&
+          this.seconds > other.seconds){
+        return 1;
+      } else if (this.hours == other.hours && 
+         this.minutes == other.minutes &&
+         this.seconds == other.seconds){
+        return 0;
+         } else return -1;
+        
     }
-    
-
+  
     
 }//end class
