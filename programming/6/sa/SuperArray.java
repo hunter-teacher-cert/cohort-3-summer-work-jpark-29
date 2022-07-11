@@ -151,14 +151,14 @@ public class SuperArray
 
   public void add(int index, int value)
   {
-    if (numberElements == data.length){
+    if (numberElements == data.length){// narrowest condition (not including)
       grow();
     }
     if(index>numberElements){
       System.out.println("Index is out of bounds.");
     } else {
-      for (int i = numberElements; i > index; i--){
-      data[i]=data[i-1];
+      for (int i = numberElements; i > index; i--){ //shifts elements toward the end of the array - started with the end of the array and moved towards the start
+      data[i]=data[i-1];// data[i] becomes data[i-1]
     }
     data[index] = value;
     numberElements++;
