@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-
+//exercise 4
 public class Max{
     static int[] array = {1,4,8,2,10};
     
