@@ -1,0 +1,19 @@
+1. What is the output of the following program?
+
+No, I wug.
+You wugga wug.
+I wug.
+
+2. Draw a stack diagram that shows the state of the program the first time ping is invoked.
+
+main 
+zoop
+baffle
+ping
+
+3. What happens if you invoke baffle(); at the end of the ping method?
+
+baffle() and ping() methods would call each other infinitely. 
+
+
+
