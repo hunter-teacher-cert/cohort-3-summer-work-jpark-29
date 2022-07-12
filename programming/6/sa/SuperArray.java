@@ -1,6 +1,6 @@
 /**
  * SuperArray by Team MarvelvsDC
- * Seth Adams
+ * Jihae Park
  * collaborators: Rachel Kaufman, Seth Adams, Jihae Park, Rich Parker
  */
 

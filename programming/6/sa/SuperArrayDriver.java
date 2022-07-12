@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
- /* Seth Adams
+ /* Jihae Park
  * collaborators: Rachel Kaufman, Seth Adams, Jihae Park, Rich Parker*/
 public class SuperArrayDriver
 {
