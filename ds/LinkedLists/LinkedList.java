@@ -53,7 +53,13 @@ public class LinkedList{
   Returns the String in the node at location index.
   */
   public String get(int index){
-    return "";
+    Node walker = head; //sets walker to the front
+    
+    for(int i = 0; i < index; i++){ //keep walking until we get to one less than the index
+      walker = walker.getNext(); //will moves us to the index
+    } 
+    //walker is at the index
+    return walker.getData();
   }
 
   /**
@@ -78,7 +84,16 @@ public class LinkedList{
   returns the number of elements in the list
   */
   public int size(){
-    return 0;
+    //create a counter
+    Node walker = head;
+    int counter = 0;
+    //loop through the L.L. until null; //if walker is not equal to null, then add 1 to the counter
+    while(walker != null){
+      walker = walker.getNext();
+      counter += 1;
+    }    
+    //return counter
+    return counter;
   }
 
 
@@ -99,7 +114,23 @@ public class LinkedList{
 
   */
   public void add(int index, String value){
-
+    if(index == 0){
+      add(value); //use the original add if index is 0 
+    } else{ //if index is zero, just the other add method with value
+      Node walker = head;
+      Node nodeToAdd; //will get updated later on
+      //loop until we get to the index value
+      Node nodeBeforeWalker = walker;
+      for(int i = 0; i < index; i++){
+        nodeBeforeWalker = walker;//brilliant! this node will always point at walker before walker gets updated
+        walker = walker.getNext();
+        System.out.println("next walker");
+      }
+      //walker is at index - the below line is the PIVOTAL part of this method
+      nodeToAdd = new Node(value, walker); //this is the new node to insert
+      //point the node before the walker to the new node
+      nodeBeforeWalker.setNext(nodeToAdd);
+    }
   }
 
 
@@ -114,7 +145,20 @@ public class LinkedList{
 
   */
   public int indexOf(String value){
-    return 0;
+    //iterate through the L.L. with walker node
+    //if the walker's data == value, then return the index of the walker
+    Node walker = head;
+    int index = -1; //-1 would mean not in the linked list 
+
+    //loop through the L.L. until null; //if walker is not equal to null, keep looking for the value.
+    while(walker != null){
+      //check to see if walker's value matches the one we are looking for
+      
+      
+      walker = walker.getNext(); //update walker
+    } 
+    
+    return index; //send back the index 
   }
 
 
