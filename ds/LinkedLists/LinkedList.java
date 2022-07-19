@@ -116,11 +116,12 @@ public class LinkedList{
   public void add(int index, String value){
     if(index == 0){
       add(value); //use the original add if index is 0 
-    } else{ //if index is zero, just the other add method with value
+    } else { //if index is zero, just the other add method with value
       Node walker = head;
       Node nodeToAdd; //will get updated later on
-      //loop until we get to the index value
       Node nodeBeforeWalker = walker;
+
+      //loop until we get to the index value
       for(int i = 0; i < index; i++){
         nodeBeforeWalker = walker;//brilliant! this node will always point at walker before walker gets updated
         walker = walker.getNext();
@@ -148,15 +149,21 @@ public class LinkedList{
     //iterate through the L.L. with walker node
     //if the walker's data == value, then return the index of the walker
     Node walker = head;
-    int index = -1; //-1 would mean not in the linked list 
+    int index = 0; //keep track of the location of the walker
 
     //loop through the L.L. until null; //if walker is not equal to null, keep looking for the value.
-    while(walker != null){
+    while(walker != null){ //walker.getData() != value will infinitely search for the data if not found - we don't want that
       //check to see if walker's value matches the one we are looking for
-      
-      
-      walker = walker.getNext(); //update walker
+      if(walker.getData() == value){
+        return index;
+      } 
+     
+      index += 1; //update the index
+      walker = walker.getNext(); //update walker to point to next value
     } 
+    
+    //if we get to here it means the item wasn't found
+    index = -1; //-1 indicates the item wasn't found 
     
     return index; //send back the index 
   }
@@ -171,10 +178,23 @@ public class LinkedList{
 
   */
   public String[] toArray(){
-    return null;
+    //create a walker node
+    Node walker = head;
+    //create a new array with the size of the L.L. size
+    String[] copy = new String[size()];
+    //System.out.println(copy.length); //just to test the size of the array
+    //iterate through the L.L. and copy over the data in each node to the new array - for loop?
+    for(int i = 0; i < size(); i++){
+      copy[i] = walker.getData();
+      walker = walker.getNext();
+    }
+    //return the String[]
+    return copy;
   }
 
-
+//l.size();
+  //this.size();
+  //size();
 
   /**
   Remove the Node at location index from the list.
