@@ -19,7 +19,7 @@ The students are familiar with the concepts of sequencing, conditional, boolean,
 ### Go!
 1. Students will have 3 minutes of independent work time to start working on the flowchart. 
 2. Students will come together as a group to determine the best way to represent the flowchart on a chartpaper (color markers and shapes will be provided).
-3. Students will resent as a group. 
+3. Students will present as a group. 
 4. Observers will be given a rubric to use as they critique each flowchart. 
 
 
