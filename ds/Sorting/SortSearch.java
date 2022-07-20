@@ -84,6 +84,7 @@ public class SortSearch{
       for(int i = start; i < data.size(); i++){
         if(data.get(i) < currSmall){
           currSmall = data.get(i);
+          smallIndex = i;
         }
       }
       //compare each item with the current smallest value and update the current smallest value 
@@ -98,16 +99,34 @@ public class SortSearch{
        Algorithm:
        Loop a variable that represents the ArrayList index from
        0 to the end of the ArrayList.
-         For each index, find the smallest from that Location
-	 to the end of the array and swap it with that index.
+       For each index, find the smallest from that Location
+	 to the end of the array and swap it with that index. 
 
-	 
-       
+      5,2,10,6,8 (compare 5 to everything)
+
+      2,5,10,6,8 (swap 2&5, compare 5 to everything else. Then compare 10 to everything)
+
+      2,5,6,10,8 (swap 6&10, compare 10 with everything after)
+
+      2,5,6,8,10 (swap 10&8)
 
     */
     public void sort(){
-
-
+      //iterate throught the data(A.L.) starting from 0 to data.size() 
+      //update the findSmallestIndex arguement
+      int temp = 0;
+      int minIndex = 0;
+      
+      for(int i = 0; i < data.size(); i++){
+        minIndex = findSmallestIndex(i); //
+        temp = data.get(minIndex); //assigning 5 to temp 
+        data.set(minIndex,data.get(i));
+        data.set(i, temp);
+        
+        // int temp = dataList.get(index1); //get the value at index 1
+        // dataList.set(index1, dataList.get(index2)); //get the value of index 2
+        // dataList.set(index2, temp); //put temp at index2 
+      }
     }
 
 
@@ -125,9 +144,9 @@ public class SortSearch{
 
     */
     public int linearSearch(int value){
+	    
 	
-	
-	return 0; // replace this return
+	    return 0; // replace this return
     }
     
     /**
@@ -142,7 +161,7 @@ public class SortSearch{
 	//   if the item is at data.get(middle), return middle
 	//   otherwise, update high, low, and middle
 
-	return 0;
+	    return 0;
 	    
     }
     
