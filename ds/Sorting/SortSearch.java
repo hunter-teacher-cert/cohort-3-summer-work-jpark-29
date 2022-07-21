@@ -44,6 +44,16 @@ public class SortSearch{
 	    }
 	
     }
+    
+  //Generate a ordered list
+    public SortSearch(int size, boolean ordered){
+      data = new ArrayList<Integer>(size); // make it large
+      for (int i = 0 ; i < size; i++){
+        data.add(i);
+      }
+	
+    }
+
 
     //overloaded constructor(with parameters): populate the ArrayList with given number(size) of random numbers ranging from 0 to 19.
     public SortSearch(int size){
@@ -144,9 +154,14 @@ public class SortSearch{
 
     */
     public int linearSearch(int value){
-	    
-	
-	    return 0; // replace this return
+	    //iterate through the data until data.size()
+      //if data.get(i) == value, return i, else return -1
+      for(int i = 0; i < data.size(); i++){
+        if(data.get(i) == value){
+          return i;
+        }
+      }
+	    return -1; 
     }
     
     /**
@@ -160,36 +175,65 @@ public class SortSearch{
 	// while we're not done:
 	//   if the item is at data.get(middle), return middle
 	//   otherwise, update high, low, and middle
+      int high = data.size() - 1;
+      int low = 0;
+      int mid = (low + high)/2; // average
 
-	    return 0;
-	    
+      //Print out the values of lo:mid:hi for each call
+      //System.out.println(low + ":" + mid + ":" + high);
+        
+      boolean binaryS = true;
+
+      while(binaryS){
+        if(data.get(mid) == value){
+          return mid;
+        } else { // when the data != value
+          if(value < data.get(mid) ){ // when value < mid
+            high = mid - 1;
+            mid = (low + high)/2;
+          } else{ //when value > mid
+            low = mid + 1;
+            mid = (low + high)/2;
+          }
+          if(low > high){ //this was a breakthrough!!! 
+            binaryS = false;
+          }
+        }
+
+      //Print out the values of lo:mid:hi for each call
+      //System.out.println(low + ":" + mid + ":" + high);
+        
+      }
+      return -1; //when the value is not in data 
     }
     
     /**
-       Implement a RECURSIVE binary search as specified by the comments
-       
+       Implement a RECURSIVE binary search as specified by the comments     
        This algorithm only works on sorted ArrayLists.
     */
 
-    public int binarySearchRecursive(int value, int lowIndex, int highIndex){
+    public int binarySearchRecursive(int value, int lowIndex, int highIndex){ //making use of recursion fot this method
 
-	// refer to class discussion
+	    // refer to class discussion - we don't need to do it. 
 	
-	return 0;
+	    return 0;
 	    
     }
     
 	
     public String toString(){
-	return ""+data;
+	    return ""+data;
     };
 
 
     public void builtinSort(){
-	Collections.sort(data);
+	    Collections.sort(data);
 	
     }
     
-
+  //helper method 
+  public int size(){
+    return data.size();
+  }
     
 }
