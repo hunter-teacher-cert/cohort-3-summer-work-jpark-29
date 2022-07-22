@@ -4,7 +4,7 @@
   // * * *
   //  * *
   //   *
-public class TreeOfStars
+public class TreeOfStarsSolution
 {
 
  

@@ -214,7 +214,7 @@ public class SortSearch{
 
     public int binarySearchRecursive(int value, int lowIndex, int highIndex){ //making use of recursion fot this method
 
-	    // refer to class discussion - we don't need to do it. 
+	    
 	
 	    return 0;
 	    
