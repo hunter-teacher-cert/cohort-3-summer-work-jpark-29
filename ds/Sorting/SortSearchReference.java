@@ -130,31 +130,31 @@ public class SortSearchReference{
        This algorithm only works on sorted ArrayLists.
     */
     public int binarySearch(int value){
-
-	// create assign variables  representing the high, low and middle indices
-	int high, low, middle;
-
-	high = data.size();
-	low  = 0;
-	
-	// while we're not done:
-	//   if the item is at data.get(middle), return middle
-	//   otherwise, update high, low, and middle
-	while (high >= low){
-	    middle = (high+low)/2;
-
-	    if (data.get(middle)==value){
-		return middle;
-	    } else if (data.get(middle) > value){
-		high = middle - 1;
-	    } else {
-
-		low = middle + 1;
-	    }
-	    
-		}
-	
-	return -1;
+    
+    	// create assign variables  representing the high, low and middle indices
+    	int high, low, middle;
+    
+    	high = data.size();
+    	low  = 0;
+    	
+    	// while we're not done:
+    	//   if the item is at data.get(middle), return middle
+    	//   otherwise, update high, low, and middle
+    	while (high >= low){
+    	    middle = (high+low)/2;
+    
+    	    if (data.get(middle)==value){
+    		return middle;
+    	    } else if (data.get(middle) > value){
+    		high = middle - 1;
+    	    } else {
+    
+    		low = middle + 1;
+    	    }
+    	    
+    		}
+    	
+    	return -1;
 	    
     }
     
@@ -165,18 +165,18 @@ public class SortSearchReference{
     */
 
     public int binarySearchRecursive(int value, int lowIndex, int highIndex){
-	if (lowIndex > highIndex)
-	    return -1;
-	
-	int middle = (lowIndex + highIndex)/2;
-
-	if (data.get(middle)==value){
-	    return middle;
-	} else if (data.get(middle) > value){
-	    return binarySearchRecursive(value,lowIndex,middle-1);
-	} else {
-	    return binarySearchRecursive(value,middle+1,highIndex);
-	}
+    	if (lowIndex > highIndex)
+    	    return -1;
+    	
+    	int middle = (lowIndex + highIndex)/2;
+    
+    	if (data.get(middle)==value){
+    	    return middle;
+    	} else if (data.get(middle) > value){
+    	    return binarySearchRecursive(value,lowIndex,middle-1);
+    	} else {
+    	    return binarySearchRecursive(value,middle+1,highIndex);
+    	}
 	
 	    
     }
@@ -195,6 +195,96 @@ public class SortSearchReference{
 	
     }
     
-
+/* Merge Sort Stuff after here */
+    /**
+       Builds and returns an ArrayList that's already in increasing order.
+       You can use this method to test your merge method.
+    */
+    public ArrayList<Integer> buildIncreasingList(int size){
+    	ArrayList<Integer>  newlist = new ArrayList<Integer>();
+    	Random r = new Random();
+    	int nextval = r.nextInt(20)+1;
+    	for (int i=0;i<size;i++){
+    	    newlist.add(nextval);
+    	    nextval = nextval + r.nextInt(20);
+    	}
     
+    	return newlist;
+	  }
+
+    /**
+       this routine should create and return a new ArrayList of
+       integers and fill it by merging list1 and list2 into the new
+       list.
+       list1 and list2 are already sorted in increasing order.
+       Example:
+       If list1 contains [1,5,17,25]
+       and list2 contains [3,6,10,30,40,50]
+       The new list will contain:
+       [1, 3, 5, 6, 10, 17, 25, 30, 40, 50]
+       
+    */
+       
+    // public ArrayList<Integer> merge(ArrayList<Integer> list1,
+				//     ArrayList<Integer> list2){
+    //   ArrayList<Integer> merged = new ArrayList<Integer>(); //no need to set the size for ArrayList ever
+    //   int i = 0;
+    //   int j = 0;
+
+    //   while(i != list1.size() || j != list2.size()){ // detect when l1 or l2 is empty
+    //     if (i == list1.size())// if you exhausted list1, this condition will be met
+    //       {
+    //         //the code for when list1 is exhausted
+            
+    //       } else {
+    //         if (list1.get(i) < list2.get(j)){
+    //           list3.add(list1.get(i));
+    //           i++;
+    //         } else {
+    //           list3.add(list2.get(j));
+    //           j++;
+    //         }
+    //       }
+    //   }
+      
+    // 	return list3; // replace this line
+    // }
+
+
+
+   public ArrayList<Integer> merge1(ArrayList<Integer> list1,
+				    ArrayList<Integer> list2){ //Z's code
+      ArrayList<Integer> merged = new ArrayList<Integer>(); 
+
+      while(list1.size() > 0 && list2.size() > 0){ // detect when l1 or l2 is empty
+        if(list1.get(0) < list2.get(0)){
+          //copy list1's first to merged
+          //and remove it from list1
+          merged.add(list1.get(0));
+          list1.remove(0);
+        } else{
+          //copy list2's first to merged
+          //and remove it from list2
+          merged.add(list2.get(0));
+          list2.remove(0);
+        }
+      //At this point, list1 or list2 will be empty
+      //but the OTHER one will have one or more
+      //items to copy
+
+      //this will be true until list1 is empty
+        while(list1.size() > 0){
+          merged.add(list1.get(0));
+          list1.remove(0);
+        }
+      //this will be true until list2 is empty
+        while(list2.size() > 0){
+          merged.add(list2.get(0));
+          list2.remove(0);
+        }
+      
+    	
+    }
+    return merged; 
+}
 }
