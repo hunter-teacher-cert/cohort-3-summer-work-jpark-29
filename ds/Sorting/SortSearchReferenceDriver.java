@@ -30,14 +30,14 @@ public class SortSearchReferenceDriver {
     ArrayList<Integer> list2 = ss.buildIncreasingList(10);
   	System.out.println(list2);
 
-    ArrayList<Integer> result = ss.merge1(list1, list2);
+    ArrayList<Integer> result = ss.merge(list1, list2);
   	System.out.println(result);
   
-  	// build a second Arralist here
-  	
-  
-  	// test your merge routine here
-	      
+  	ss = new SortSearch(size);
+      
+    
+      
+    
 
     }
 }

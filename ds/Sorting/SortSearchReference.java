@@ -252,39 +252,90 @@ public class SortSearchReference{
 
 
 
-   public ArrayList<Integer> merge1(ArrayList<Integer> list1,
+   public ArrayList<Integer> merge(ArrayList<Integer> list1,
 				    ArrayList<Integer> list2){ //Z's code
-      ArrayList<Integer> merged = new ArrayList<Integer>(); 
-
-      while(list1.size() > 0 && list2.size() > 0){ // detect when l1 or l2 is empty
-        if(list1.get(0) < list2.get(0)){
-          //copy list1's first to merged
-          //and remove it from list1
-          merged.add(list1.get(0));
-          list1.remove(0);
-        } else{
-          //copy list2's first to merged
-          //and remove it from list2
-          merged.add(list2.get(0));
-          list2.remove(0);
-        }
-      //At this point, list1 or list2 will be empty
-      //but the OTHER one will have one or more
-      //items to copy
-
-      //this will be true until list1 is empty
-        while(list1.size() > 0){
-          merged.add(list1.get(0));
-          list1.remove(0);
-        }
-      //this will be true until list2 is empty
-        while(list2.size() > 0){
-          merged.add(list2.get(0));
-          list2.remove(0);
-        }
-      
+    	ArrayList<Integer> merged = new ArrayList<Integer>(); 
+    
+    	// keep looking at the first items of list1 and list2
+    	// taking the smaller for result
+    	// until we're done.
+    
+    	while(list1.size()>0 && list2.size()>0){
+    	    if (list1.get(0) < list2.get(0)){
+    		// copy list1's fist to merged
+    		// and remove it from list1
+    		merged.add(list1.get(0));
+    		list1.remove(0);
+    			   
+    	    } else {
+    		// copy list2's first to merged
+    		// and remove it from list2
+    		merged.add(list2.get(0));
+    		list2.remove(0);
+    	    }
+    	    
+    	}
+    
+    	// At this point, list1 or list2 will be empty
+    	// but the OTHER one will have one or more
+    	// items to copy.
+    
+    	// this will be true until
+    	// list one is empty
+    	while (list1.size()>0){
+    	    merged.add(list1.get(0));
+    	    list1.remove(0);
+    	}
+    
+    	// this will be true until
+    	// list two is empty
+    	while (list2.size() > 0){
+    	    merged.add(list2.get(0));
+    	    list2.remove(0);
+    	}
     	
+    	return merged;
     }
-    return merged; 
-}
+
+  public ArrayList<Integer> mergeSort(ArrayList<Integer> list){
+
+      // check for base case
+      if (list.size() < 2){
+        return list;
+      } else {
+        ArrayList<Integer> left = new ArrayList<Integer>;
+        ArrayList<Integer> right = new ArrayList<Integer>;
+
+        int mid = list.size()/2;
+
+        for(int i = 0; i < list.size(); i++){
+          if (i < mid){
+            left.add(i);
+          } else{
+            right.add(i);
+          }
+        }
+
+        left = mergeSort(left);
+        right = mergeSort(right);
+
+        ArrayList<Integer> result = merge(left, right);
+        
+      }
+
+      return result;
+
+      // if not the base case
+      // split in two lists
+      // meregSort the left half
+      // mergeSort the right half
+      // merge them together into a new list
+      // return that new list 
+
+  }
+
+
+  public void msort(){
+      data =  mergeSort(data);
+  }
 }

@@ -1,0 +1,86 @@
+/*
+Introduction
+------------
+Direction:
+1. Trace the codes below.
+2. Identify which of the three errors that each code falls into.
+3. How would you fix the error? Comment which line that you're correcting. 
+
+
+
+This will be implemented in the topic of arrays (see programming/ArrayPractice).
+
+Debugging Compiler Errors
+-------------------------
+
+Errors that occur before an executable is produced is extremely common, students should be aware 
+
+Example (modified) code to illustrate this issue:
+=================================================
+  public static void printArray(int[] data)
+  {
+    System.out.print('{')
+    for(int i = 0; i < data.length-1; i++){
+      System.out.print(data[i]+", ");
+    }
+    System.out.println(data[data.length-1]+"}");
+  }
+=================================================
+
+Key Points to Emphasize:
+* Most compiler errors are superfluous, because the compiler is off-track
+  after the first error.
+* Focus on the information in the first error and then recompile before
+  trying the others.
+
+Things to Avoid:
+* Avoid adding or deleting spurious code, if it isn't relevant to the
+  error provided.
+* Don't wait until your code is too long
+---
+
+Debugging Run-Time Errors
+-------------------------
+
+Example (modified) code to illustrate this issue:
+=================================================
+  public static int firstOccurrence(int[] data, int value)
+  {
+    int index = -1;
+    for(int i = 0; i <= data.length; i++){
+      if(data[i] == value){
+        index = i;
+      }
+    }
+    return index;
+  }
+=================================================
+
+Key Points to Emphasize:
+*The index of the last element of an array is one less than the length of the array (data.length)
+*Tracing with examples with small size
+
+---
+
+Debugging Logic Errors
+
+
+----------------------
+
+Example (modified) code to illustrate this issue:
+=================================================
+  public static int arraySum(int[] data)
+  {
+    int total = 0;
+    for(int i = 1; i<data.length; i++){
+      total += data[i];
+    }
+    return total;
+  }
+=================================================
+
+Key Points to Emphasize:
+* Test with multiple small arrays and make predictions
+*
+---
+

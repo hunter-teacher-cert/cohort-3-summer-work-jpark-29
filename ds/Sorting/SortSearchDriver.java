@@ -8,7 +8,7 @@ public class SortSearchDriver {
 
   //How big should the list be?
   //public static int size = 100000;  // the number of elements in data
-  public static int size = 12000000;  //largest? number that can fit in memory in replit
+  public static int size = 10;  //largest? number that can fit in memory in replit
 
   
   public static void main(String[] args) {
@@ -84,6 +84,26 @@ public class SortSearchDriver {
       System.out.println("found at index " + found3);
     }
 
+    ArrayList<Integer> list1 = ss.buildIncreasingList(10);
+    System.out.println(list1);
+  
+    ArrayList<Integer> list2 = ss.buildIncreasingList(10);
+    System.out.println(list2);
+  
+    ArrayList<Integer> result = ss.merge(list1, list2);
+    System.out.println(result);
+  
+    //ss = new SortSearch(size);
+    // ss.msort();
+
+    //TEST MSORT
+    if(size < 100001){  //only sort if replit can handle the size in a reasonable amount of time
+    	System.out.println("\nUse msort on ss:");
+      startTimeTest();
+    	ss.msort();
+      endTimeTest();
+      printList(ss);
+    }
 	      
 
   }
@@ -107,4 +127,5 @@ public class SortSearchDriver {
       System.out.println(ss);
     }
   }
+
 }
