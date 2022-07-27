@@ -96,7 +96,7 @@ public class SortSearchDriver {
     //ss = new SortSearch(size);
     // ss.msort();
 
-    //TEST MSORT
+    //TEST MSORT - time: NOT DONE
     if(size < 100001){  //only sort if replit can handle the size in a reasonable amount of time
     	System.out.println("\nUse msort on ss:");
       startTimeTest();

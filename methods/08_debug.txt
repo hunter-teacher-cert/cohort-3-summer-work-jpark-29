@@ -60,10 +60,16 @@ Key Points to Emphasize:
 *The index of the last element of an array is one less than the length of the array (data.length)
 *Tracing with examples with small size
 
+Things to Avoid:
+* Comment what you know works and what it does.
+* Do not write off any conditional without justification.
+
 ---
 
 Debugging Logic Errors
 
+Another situation that really arises in conditionals, but this time without
+causing the computer to scream profanities at us!
 
 ----------------------
 
@@ -81,6 +87,11 @@ Example (modified) code to illustrate this issue:
 
 Key Points to Emphasize:
 * Test with multiple small arrays and make predictions
-*
+* Drawing out state diagrams with preconditions and postconditions can help
+  flush out where the problem is hiding.
+
+Things to Avoid:
+* Do not delete problematic code, comment it out in case you were wrong in
+  accusing it of being guilty!
 ---
 
